@@ -27,12 +27,34 @@ class Field {
             console.log('Use only numbers please, percentage is only the numbers between 5 and 80!')
             return 
         }
+        /*DEFINE HOT MANY HOLES THERE WILL BE*/
         let howManyHoles = Math.floor(x * y / 100 * percentage)
         console.log(howManyHoles)
-        let newField = []
-        for(let i; i < x; i++) {
 
+        /*DEFINE RANDOM STARTING POINT*/ 
+        let startingPointX = Math.floor(Math.random() * x) 
+        let startingPointY = Math.floor(Math.random() * y) 
+        let startingPoint = [startingPointX, startingPointY]
+
+        /* GENERATE NEW EMPTY FIELD*/
+        let newLine = []
+        let newField = []
+        for(let i = 0; i < x; i++) {
+            newField.push(newLine)
         }
+       
+
+        for(let i = 0; i < x; i++) {
+            for(let j = 0; j < y; j++) {
+                /*CREATE A CHECK AND RANDOMLY CHOOSE WHAT TO FILL THE CELL WITH*/
+                // if(i === startingPointX)
+                newField[i][j] = howManyHoles
+                
+                howManyHoles -= 1
+            }
+           
+        }
+        console.log(newField)
     }
     
 }
@@ -43,4 +65,4 @@ const tr = new Field([
         ['░', '^', '░'],
         ])
 
-tr.generateField(4,4, 90)
+tr.generateField(4,6, 70)
